@@ -28,22 +28,22 @@
         #region SETTERS
         public void SetCharIndex(int index)
         {
-            this.charIndex = index;
+            charIndex = index;
         }
 
         public void SetCharName(string name)
         {
-            this.charName = name;
+            charName = name;
         }
 
         public void SetCharLevel(int level)
         {
-            this.charLevel = level;
+            charLevel = level;
         }
 
         public void SetCharClass(CharClass charClass)
         {
-            this.charClass= charClass; 
+            this.charClass = charClass;
         }
         #endregion
 

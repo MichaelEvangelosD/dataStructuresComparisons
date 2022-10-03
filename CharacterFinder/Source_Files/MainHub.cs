@@ -1,15 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace CharacterFinder
 {
     class MainHub
     {
-        static Character[] characters;
+        static Character[] charactersArray;
+        //static List<Character> charactersList;
 
         static void Main(string[] args)
         {
             //Generate characters
-            characters = CharacterGenerator.GenerateCharacters();
+            charactersArray = CharacterGenerator.GenerateCharacters();
 
             new MainHub().MenuSelection();
         }
@@ -27,7 +29,7 @@ namespace CharacterFinder
 
                 SwitchOnChoice(userChoice);
 
-            } while (userChoice < 0 || userChoice > 3);
+            } while (userChoice < 0 || userChoice > 4);
         }
 
         void PrintMenu()
@@ -38,6 +40,7 @@ namespace CharacterFinder
             Console.WriteLine("1) Find character by name.");
             Console.WriteLine("2) Print characters.");
             Console.WriteLine("3) Exit program.");
+            Console.WriteLine("4) Run statistics.");
         }
 
         void SwitchOnChoice(int choice)
@@ -69,6 +72,12 @@ namespace CharacterFinder
                     break;
                 }
 
+                case 4:
+                {
+                    RunStatistics();
+                    break;
+                }
+
                 default:
                 {
                     Console.WriteLine("Invalid choice");
@@ -91,11 +100,11 @@ namespace CharacterFinder
                 userGivenIndex = int.Parse(tempStr);
                 Console.WriteLine();
 
-            } while (userGivenIndex < 0 || userGivenIndex > characters.Length);
+            } while (userGivenIndex < 0 || userGivenIndex > charactersArray.Length);
 
             Console.WriteLine($"User at index #:{userGivenIndex}\n" +
-                $"Name: {characters[userGivenIndex].GetName()}\n" +
-                $"Level: {characters[userGivenIndex].GetLevel()}");
+                $"Name: {charactersArray[userGivenIndex].GetName()}\n" +
+                $"Level: {charactersArray[userGivenIndex].GetLevel()}");
         }
 
         void FindByNameString()
@@ -104,14 +113,14 @@ namespace CharacterFinder
             Console.WriteLine("Please insert a name substring.");
             userString = Console.ReadLine();
 
-            for (int i = 0; i < characters.Length; i++)
+            for (int i = 0; i < charactersArray.Length; i++)
             {
-                if (characters[i].GetName().Contains(userString))
+                if (charactersArray[i].GetName().Contains(userString))
                 {
-                    Console.WriteLine("Index: " + characters[i].GetIndex());
-                    Console.WriteLine("Name: " + characters[i].GetName());
-                    Console.WriteLine("Level: " + characters[i].GetLevel());
-                    Console.WriteLine("Class: " + characters[i].GetClass());
+                    Console.WriteLine("Index: " + charactersArray[i].GetIndex());
+                    Console.WriteLine("Name: " + charactersArray[i].GetName());
+                    Console.WriteLine("Level: " + charactersArray[i].GetLevel());
+                    Console.WriteLine("Class: " + charactersArray[i].GetClass());
                     Console.WriteLine("-------------------------");
                 }
             }
@@ -119,14 +128,46 @@ namespace CharacterFinder
 
         void PrintCharacters()
         {
-            for (int i = 0; i < characters.Length; i++)
+            for (int i = 0; i < charactersArray.Length; i++)
             {
-                Console.WriteLine("Index: " +characters[i].GetIndex());
-                Console.WriteLine("Name: " +characters[i].GetName());
-                Console.WriteLine("Level: " +characters[i].GetLevel());
-                Console.WriteLine("Class: " +characters[i].GetClass());
+                Console.WriteLine("Index: " + charactersArray[i].GetIndex());
+                Console.WriteLine("Name: " + charactersArray[i].GetName());
+                Console.WriteLine("Level: " + charactersArray[i].GetLevel());
+                Console.WriteLine("Class: " + charactersArray[i].GetClass());
                 Console.WriteLine("-------------------------");
             }
+        }
+
+        void RunStatistics()
+        {
+            DateTime startTime = DateTime.Now;
+            DateTime endTime;
+            TimeSpan elapsedTime;
+
+            Console.WriteLine("Starting run...");
+            int runTimes = 1000000;
+            int tempI = 0;
+            for (int i = 0; i <= charactersArray.Length; i++)
+            {
+                if (tempI >= runTimes) break;
+
+                if (i > charactersArray.Length - 1)
+                {
+                    i = 0;
+                }
+
+                Console.WriteLine(charactersArray[i].GetIndex().ToString());
+
+                tempI++;
+            }
+
+            endTime = DateTime.Now;
+
+            elapsedTime = (endTime - startTime);
+
+            double ms = elapsedTime.TotalMilliseconds / 1000;
+
+            Console.WriteLine(ms + "ms");
         }
         #endregion
     }

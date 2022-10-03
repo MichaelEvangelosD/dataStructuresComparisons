@@ -1,0 +1,25 @@
+-100k index access runs-
+
+Array
+* Class: 6.5ms - 7.2ms
+* Name: 6.7 - 7ms
+* Index: 8.5ms - 8.6ms (With ToString() inside the WriteLine ~6.7ms)
+
+List
+* Class: 6.7ms - 7ms
+* Name: 6.6ms
+* Index: 8.2ms - 8.5ms (With ToString() inside the WriteLine ~6.8ms)
+
+----------------------------------------------------------------------------
+
+-1m index access runs-
+
+Array
+* Class: 35s
+* Name: 34s
+* Index: 51s (With ToString() inside the WriteLine ~36s)
+
+List
+* Class: 36s
+* Name: 35s
+* Index: 51s (With ToString() inside the WriteLine ~34s)
