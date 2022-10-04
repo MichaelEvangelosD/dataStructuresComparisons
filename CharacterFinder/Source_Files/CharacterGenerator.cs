@@ -3,21 +3,30 @@ using System.Collections.Generic;
 
 namespace CharacterFinder
 {
+    /// <summary>
+    /// A static class that's used for creating random player characters.
+    /// </summary>
     static class CharacterGenerator
     {
-        public static Character[] GenerateCharacters()
+        #region VARIABLES
+        static string[] baseNames = new string[]
         {
-            Character[] characters = new Character[100];
+            "George",
+            "Nikos",
+            "Stelios",
+            "Alexia",
+        };
 
-            string[] baseNames = new string[]
-            {
-                "George",
-                "Nikos",
-                "Stelios",
-                "Alexia",
-            };
+        static Random randomizer = new Random();
+        #endregion
 
-            Random randomizer = new Random();
+        /// <summary>
+        /// Call to generate a passed amount of Character objs with random stats and return an array of them.
+        /// </summary>
+        public static Character[] GenerateCharacters(int numberOfChars)
+        {
+            Character[] characters = new Character[numberOfChars];
+
             int rndInt = 0;
             string rndName = string.Empty;
             int rndLevel = 0;
@@ -38,25 +47,19 @@ namespace CharacterFinder
             return characters;
         }
 
-        public static List<Character> GenerateCharactersList()
+        /// <summary>
+        /// Call to generate a passed amount of Character objs with random stats and return a List of them.
+        /// </summary>
+        public static List<Character> GenerateCharactersList(int numberOfChars)
         {
             List<Character> characters = new List<Character>();
 
-            string[] baseNames = new string[]
-            {
-                "George",
-                "Nikos",
-                "Stelios",
-                "Alexia",
-            };
-
-            Random randomizer = new Random();
             int rndInt = 0;
             string rndName = string.Empty;
             int rndLevel = 0;
             CharClass rndClass;
 
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < numberOfChars; i++)
             {
                 rndInt = i;
                 rndName = baseNames[randomizer.Next(0, baseNames.Length)] + randomizer.Next(0, 100);
