@@ -178,7 +178,7 @@ namespace CharacterFinder
 
             Console.WriteLine("Starting run...");
 
-            int runTimes = 1000000;
+            int runTimes = 100000;
             int tempI = 0;
             for (int i = 0; i <= charactersArray.Length; i++)
             {
@@ -189,7 +189,7 @@ namespace CharacterFinder
                     i = 0;
                 }
 
-                Console.WriteLine(charactersArray[i].GetIndex().ToString());
+                int num = charactersArray[i].GetIndex();
 
                 tempI++;
             }
