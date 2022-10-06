@@ -6,7 +6,7 @@ namespace CharacterFinder
     class MainHub
     {
         static Character[] charactersArray;
-        static List<Character> charactersList;
+        //static List<Character> charactersList;
 
         static void Main(string[] args)
         {
@@ -176,6 +176,8 @@ namespace CharacterFinder
             DateTime endTime;
             TimeSpan elapsedTime;
 
+            int num = 0;
+
             Console.WriteLine("Starting run...");
 
             int runTimes = 100000;
@@ -189,7 +191,8 @@ namespace CharacterFinder
                     i = 0;
                 }
 
-                int num = charactersArray[i].GetIndex();
+                //num = charactersArray[i].GetIndex();
+                Console.WriteLine(charactersArray[i]);
 
                 tempI++;
             }

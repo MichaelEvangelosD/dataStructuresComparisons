@@ -51,5 +51,10 @@
         public string GetName() => charName;
         public int GetLevel() => charLevel;
         public CharClass GetClass() => charClass;
+
+        public override string ToString()
+        {
+            return $"{this.charIndex}";
+        }
     }
 }
