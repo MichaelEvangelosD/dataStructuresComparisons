@@ -191,7 +191,6 @@ namespace CharacterFinder
                     i = 0;
                 }
 
-                //num = charactersArray[i].GetIndex();
                 Console.WriteLine(charactersArray[i]);
 
                 tempI++;
