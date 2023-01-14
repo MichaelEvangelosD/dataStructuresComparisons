@@ -176,8 +176,6 @@ namespace CharacterFinder
             DateTime endTime;
             TimeSpan elapsedTime;
 
-            int num = 0;
-
             Console.WriteLine("Starting run...");
 
             int runTimes = 100000;
